@@ -1,0 +1,7 @@
+name: YourPrefix
+version: ${project.version}
+main: net.poweredbyhate.yourprefix.YourPrefix
+depend: [Vault]
+authors: [LaxWasHere]
+commands:
+  prefix:

@@ -1,0 +1,21 @@
+Messages:
+  ContainsCensored: "&cIt contains censored word"
+  HasColor: "&cIt contains a censored color %COLOR%"
+  TooShort: "&cIt's too short"
+  TooLong: "&cIt's too long"
+
+MaxLength: 15
+
+MinLength: 3
+
+Censor:
+  Colors:
+    - '0'
+    - 'k'
+    - 'm'
+  Words:
+    - '\b(f+(\W|\d|_)*u+(\W|\d|_)*c+(\W|\d|_)*k+(\W|\d|_)*)'
+    - '\b(n+(\W|\d|_)*i+(\W|\d|_)*g+(\W|\d|_)*g+(\W|\d|_)*e+(\W|\d|_)*r+(\W|\d|_)*)'
+    - '\b(c+(\W|\d|_)*u+(\W|\d|_)*n+(\W|\d|_)*t+(\W|\d|_)*)'
+    - '\b(v+(\W|\d|_)*k+(\W|\d|_)*2+(\W|\d|_)*g+(\W|\d|_)*p+(\W|\d|_)*z+(\W|\d|_)*)'
+    - '\b(r+(\W|\d|_)*e+(\W|\d|_)*t+(\W|\d|_)*a+(\W|\d|_)*r+(\W|\d|_)*d+(\W|\d|_)*)'
