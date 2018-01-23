@@ -27,6 +27,8 @@ public class Input {
         Inventory gui = Bukkit.createInventory(new MagicBukket(), 9*3, "Prefix Setting");
         gui.setItem(10, new Itemizer().createItem(Material.BOOK_AND_QUILL,1,0,"&aSet Prefix!","&7Click to set your prefix"));
         gui.setItem(11, new Itemizer().createItem(Material.BOOK,1,0,"&aReset Prefix!", "&7Click to reset your prefix!"));
+        gui.setItem(15, new Itemizer().createItem(Material.BOOK_AND_QUILL,1,0,"&aSet Suffix!","&7Click to set your suffix"));
+        gui.setItem(16, new Itemizer().createItem(Material.BOOK,1,0,"&aReset Suffix!", "&7Click to reset your suffix!"));
         gui.setItem(13, new Itemizer().createItem(Material.SKULL_ITEM, 1, 3, this.p.getDisplayName(),"&aPrefix : &r%PREFIX%~&aSuffix : &r%SUFFIX%".
                 replace("%PREFIX%", YourPrefix.getMain().getChat().getPlayerPrefix(this.p).replace("%SUFFIX%", YourPrefix.getMain().getChat().getPlayerSuffix(this.p)))));
         for (int i = 0; i < gui.getSize(); i++) {
@@ -38,7 +40,7 @@ public class Input {
     }
 
     public void askPrefix() {
-        new AnvilGUI(YourPrefix.getMain(), this.p, "Enter Prefix", (player, reply) -> {
+        new AnvilGUI(YourPrefix.getMain(), this.p, "Enter Prefix Here", (player, reply) -> {
             if (reply == null || reply.equals("")) {
                 this.p.closeInventory();
                 return "";
@@ -53,7 +55,7 @@ public class Input {
     }
 
     public void askSuffix() {
-        new AnvilGUI(YourPrefix.getMain(), this.p, "Enter Suffix", (player, reply) -> {
+        new AnvilGUI(YourPrefix.getMain(), this.p, "Enter Suffix Here", (player, reply) -> {
             if (reply == null || reply.equals("")) {
                 this.p.closeInventory();
                 return "";

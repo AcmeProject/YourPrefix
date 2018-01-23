@@ -4,4 +4,5 @@ main: net.poweredbyhate.yourprefix.YourPrefix
 depend: [Vault]
 authors: [LaxWasHere]
 commands:
-  prefix:
+  yourprefix:
+    aliases: [myprefix, yp, mp, yprefix, prefix]

@@ -18,7 +18,7 @@ public class InventoryClickListener implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent ev) {
-        if (ev.getClickedInventory().getHolder() instanceof MagicBukket) {
+        if (ev.getClickedInventory() != null && ev.getClickedInventory().getHolder() instanceof MagicBukket) {
             ev.setCancelled(true);
             if (!ev.getCurrentItem().hasItemMeta()) {
                 return;
@@ -30,6 +30,14 @@ public class InventoryClickListener implements Listener {
             }
             if (name.equalsIgnoreCase("Reset Prefix!") && p.hasPermission("yourprefix.prefix.use")) {
                 YourPrefix.getMain().getChat().setPlayerPrefix((Player) ev.getWhoClicked(),"");
+                ev.getWhoClicked().closeInventory();
+            }
+            if (name.equalsIgnoreCase("Set Suffix!") && p.hasPermission("yourprefix.suffix.use")) {
+                new Input((Player) ev.getWhoClicked()).askSuffix();
+            }
+            if (name.equalsIgnoreCase("Reset Suffix!") && p.hasPermission("yourprefix.suffix.use")) {
+                YourPrefix.getMain().unsetPlayerSuffix((Player) ev.getWhoClicked(),"");
+                ev.getWhoClicked().closeInventory();
             }
         }
     }

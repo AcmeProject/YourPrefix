@@ -21,10 +21,11 @@ public final class YourPrefix extends JavaPlugin {
     public void onEnable() {
         instance = this;
         saveDefaultConfig();
-        getCommand("prefix").setExecutor(new PrefixCommand());
+        getCommand("yourprefix").setExecutor(new PrefixCommand());
         Bukkit.getPluginManager().registerEvents(new InventoryClickListener(), this);
         if (!setupChat()) {
-            getLogger().log(Level.INFO, "Failed to hook into vault");
+            getLogger().log(Level.SEVERE, "Failed to hook into vault");
+            Bukkit.getPluginManager().disablePlugin(this);
         }
     }
 
@@ -35,15 +36,25 @@ public final class YourPrefix extends JavaPlugin {
     }
 
     public void setPlayerPrefix(Player p, String prefix) {
-        for (World w : Bukkit.getWorlds()) {
-            getChat().setPlayerPrefix(w.getName(), p, prefix);
-        }
+        getChat().setPlayerPrefix(null, p, prefix);
+        new PlayerData(this, p.getName()).savePrefix(prefix, 1);
+
     }
 
-    public void setPlayerSuffix(Player p, String prefix) {
-        for (World w : Bukkit.getWorlds()) {
-            getChat().setPlayerSuffix(w.getName(), p, prefix);
-        }
+    public void setPlayerSuffix(Player p, String suffix) {
+        getChat().setPlayerSuffix(null, p, suffix);
+        new PlayerData(this, p.getName()).saveSuffix(suffix, 1);
+    }
+
+    public void unsetPlayerPrefix(Player p, String prefix) {
+        getChat().setPlayerPrefix(null, p, null);
+        new PlayerData(this, p.getName()).savePrefix(chat.getPlayerPrefix(null, p), 0);
+
+    }
+
+    public void unsetPlayerSuffix(Player p, String suffix) {
+        getChat().setPlayerSuffix(null, p, null);
+        new PlayerData(this, p.getName()).saveSuffix(chat.getPlayerSuffix(null, p), 0);
     }
 
     public Chat getChat() {
