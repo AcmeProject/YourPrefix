@@ -47,14 +47,13 @@ public final class YourPrefix extends JavaPlugin {
     }
 
     public void unsetPlayerPrefix(Player p, String prefix) {
-        getChat().setPlayerPrefix(null, p, null);
         new PlayerData(this, p.getName()).savePrefix(chat.getPlayerPrefix(null, p), 0);
-
+        getChat().setPlayerPrefix(null, p, "");
     }
 
     public void unsetPlayerSuffix(Player p, String suffix) {
-        getChat().setPlayerSuffix(null, p, null);
         new PlayerData(this, p.getName()).saveSuffix(chat.getPlayerSuffix(null, p), 0);
+        getChat().setPlayerSuffix(null, p, "");
     }
 
     public Chat getChat() {

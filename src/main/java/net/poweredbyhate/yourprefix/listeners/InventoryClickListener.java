@@ -29,14 +29,16 @@ public class InventoryClickListener implements Listener {
                 new Input((Player) ev.getWhoClicked()).askPrefix();
             }
             if (name.equalsIgnoreCase("Reset Prefix!") && p.hasPermission("yourprefix.prefix.use")) {
-                YourPrefix.getMain().getChat().setPlayerPrefix((Player) ev.getWhoClicked(),"");
+                YourPrefix.getMain().unsetPlayerPrefix(p, "");
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&aSuccessfully reset your prefix"));
                 ev.getWhoClicked().closeInventory();
             }
             if (name.equalsIgnoreCase("Set Suffix!") && p.hasPermission("yourprefix.suffix.use")) {
                 new Input((Player) ev.getWhoClicked()).askSuffix();
             }
             if (name.equalsIgnoreCase("Reset Suffix!") && p.hasPermission("yourprefix.suffix.use")) {
-                YourPrefix.getMain().unsetPlayerSuffix((Player) ev.getWhoClicked(),"");
+                YourPrefix.getMain().unsetPlayerSuffix(p,"");
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&aSuccessfully reset your suffix"));
                 ev.getWhoClicked().closeInventory();
             }
         }
